@@ -1,0 +1,36 @@
+class Solution {
+public:
+
+    string encode(vector<string>& strs) {
+        string encoded = "";
+
+        for(string& i: strs){
+            encoded.append(to_string(i.size()))
+                   .append("#")
+                   .append(i);
+        }
+        cout<<"Encoded:"<<encoded;
+        return encoded;
+    }
+
+    vector<string> decode(string s) {
+        vector<string> strs;
+        string ans = "";
+        int i = 0;
+        while(i < s.size()){
+            int j = i;
+            while(s[j] != '#' && j<s.size()){
+                j++;
+            }
+        int count = stoi(s.substr(i, j - i));
+
+        i = j + 1;
+
+        strs.push_back(s.substr(i, count));
+        i = i+ count;
+
+        }
+
+        return strs;
+    }
+};
